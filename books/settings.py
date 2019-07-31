@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 't-g1g6$-9#rlv&d#cp++!d*58@u4l!9-)b^d^8%=-rw(v(dzvy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -140,7 +140,7 @@ if os.getcwd() == '/app':
     
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https') 
     
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = ['booklibstx.herokuapp.com']
 
     DEBUG = False
  
