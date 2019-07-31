@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <h1>search</h1>
+          
+          <form action="{% url 'search' %}">
+                <div class="col-md-4 mb-3">
+                        <input type="text" name="titles" class="form-control" placeholder="Title">
+                  </div>
+        
+                  <div class="col-md-4 mb-3">
+                        <input type="text" name="author" class="form-control" placeholder="Author">
+                   </div>
+                   <div class="col-md-4 mb-3">
+                        <input type="text" name="lang" class="form-control" placeholder="Language">
+                   </div>  
+                
+            <div class="col-md-4 mb-3">
+                <select name="date range" class="form-control">
+                    {% for key,value in publishedDate_choices.items %}
+                      <option value="{{ key }}">{{ value }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button class="btn btn-secondary" type="submit">Search for book</button>
+        </form>  <br>
+        <div class="containter">
+                {% if books_data %}
+                {% for book in books_data %}
+                  <div class="container">
+                      <h4> Title: {{ book.title }}</h4>
+                      <h4> Authors: {{ book.authors }}</h4>
+                      <h4> publishedDate: {{ book.publishedDate }}</h4>
+                      <h4> ISBN13: {{ book.isbn13 }}</h4>
+                      <h4> ISBN10: {{ book.isbn10 }}</h4>
+                      <h4> pageCount: {{ book.pageCount }}</h4>
+                      <h4> imageLinks: {{ book.imageLinks }}</h4>
+                      <h4> language: {{ book.language }}</h4>
+                      <br><br>
+                  </div>
+      
+                {% endfor %}
+              {% else %}
+                <p>No books found!</p>
+              {% endif %}
+        </div>
+    </div>
+</div>       
+{% endblock %}
